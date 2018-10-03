@@ -1,0 +1,12 @@
+GameName, year, genre,secondary genre, console , rating, publisher, developer, creator , exec producer
+
+Actual: Game name year genre second genre console developer publisher rating
+
+
+
+Final:
+
+Gamenam, year, genre, sec genre, console name, console year created, years active, rating name, recommended ages, pub name, subaddress, employees name, emp address employee ID, creator title, producer title
+
+
+Thru PC!!!!!!!!!
