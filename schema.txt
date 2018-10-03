@@ -1,0 +1,42 @@
+create table developer(name varchar(100), address varchar(100), primary key
+(name));
+create table publisher(name varchar(100), address varchar(100), primary key
+(name));
+create table platforms(systemName varchar(100), yearCreated varchar (5),
+yearsActive int, primary key(systemName));
+create table ratings(ratingName varchar(5), recommendedAges varchar(11),
+primary key(ratingName));
+create table videogame(title varchar (100), dateReleased varchar (30), genre
+varchar (25), secondaryGenre varchar (25), developerName varchar (100),
+publisherName varchar (100),check( dateReleased >= 1970 and dateRelease
+<=2018), primary key(title,dateReleased), foreign
+key(developerName)references developer(name))
+foreign key(publisherName)references publisher(name));
+create table playon(gameTitle varchar(100), gameYearReleased varchar(30),
+platformName varchar(100), primary key(gameTitle,gameYearReleased,
+platformName),
+foreign key(gameTitle, gameYearReleased) references videogame(title,
+dateReleased),
+foreign key(platformName) references platforms(systemName)
+);
+create table isGivenRatings(gameTitle varchar(100), dateReleased varchar(30),
+ratingName varchar(5) , primary key (gameTitle, dateReleased, ratingName),
+foreign key(gameTitle, dateReleased) references videogame(title,
+dateReleased),
+foreign key(ratingName) references ratings(ratingName)
+);
+create table developedBy(gameTitle varchar(100), dateReleased varchar(30),
+developerName varchar(100), creatorID int , primary key (gameTitle,
+dateReleased, developerName),
+foreign key(gameTitle, dateReleased) references videogame(title,
+dateReleased),
+foreign key(developerName) references developer(name),
+foreign key(creatorID) references employees(ID));
+create table publishedBy(gameTitle varchar(100), dateReleased varchar(30),
+publisherName varchar(100), execproducer int , primary key (gameTitle,
+dateReleased, publisherName),
+foreign key(gameTitle, dateReleased) references videogame(title,
+dateReleased),
+foreign key(publisherName) references publisher(name),
+foreign key(execproducer) references employees(ID)
+);
